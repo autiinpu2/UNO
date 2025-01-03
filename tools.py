@@ -31,8 +31,8 @@ class Button():
 
 
 class Button_dark_mode():
-    def __init__(self, x, y, state, dark_mode_image, light_mode_image):
-        self.rect = pygame.Rect(x, y, 100, 100)
+    def __init__(self, x, y, width, height, state, dark_mode_image, light_mode_image):
+        self.rect = pygame.Rect(x, y, width/14.4, height/8.1)
         self.state = state
         self.dark_mode_image = dark_mode_image
         self.light_mode_image = light_mode_image
@@ -60,9 +60,29 @@ class Button_dark_mode():
             screen.blit(self.light_mode_image, self.rect)
     def get_state(self):
         return self.state
+
 def open_rules():
     """
     Opens the rules of the game
     """
     import webbrowser
     webbrowser.open_new_tab("https://sites.google.com/view/uno-modifie/accueil")
+
+class Background():
+    def __init__(self, dark_color, light_color, dark_mode):
+        self.dark_color = dark_color
+        self.light_color = light_color
+        self.dark_mode = dark_mode
+        if dark_mode:
+            self.color = dark_color  
+            self.color_save = light_color
+        else:
+            self.color = light_color
+            self.color_save = dark_color
+
+    def draw(self, screen):
+        screen.fill(self.color)
+    def transition(self, fps):
+        transition_frame = int(fps/5)
+        for i in range(transition_frame):
+            pass
