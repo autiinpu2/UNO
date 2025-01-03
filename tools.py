@@ -36,16 +36,23 @@ class Button_dark_mode():
         self.state = state
         self.dark_mode_image = dark_mode_image
         self.light_mode_image = light_mode_image
-
-    def draw(self, screen):
+    
+    def update(self, event):
         mouse_pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(mouse_pos):
-            if pygame.mouse.get_pressed()[0]:
-                self.state = not self.state
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if self.rect.collidepoint(pygame.mouse.get_pos()):
+                    self.state = not self.state
+        else:
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+    def draw(self, screen):
         if self.state:
             screen.blit(self.dark_mode_image, self.rect)
         else:
             screen.blit(self.light_mode_image, self.rect)
+    def get_state(self):
+        return self.state
 def open_rules():
     """
     Opens the rules of the game
