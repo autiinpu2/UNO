@@ -38,6 +38,9 @@ class Button_dark_mode():
         self.light_mode_image = light_mode_image
     
     def update(self, event):
+        """
+        Met à jour l'état du bouton de mode sombre en fonction de la position de la souris et des événements de la souris.
+        """
         mouse_pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(mouse_pos):
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
@@ -47,6 +50,10 @@ class Button_dark_mode():
         else:
             pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
     def draw(self, screen):
+        """
+        Dessine le bouton de mode sombre sur l'écran.
+        Affiche l'image de mode sombre si le bouton est activé, sinon affiche l'image de mode clair.
+        """
         if self.state:
             screen.blit(self.dark_mode_image, self.rect)
         else:

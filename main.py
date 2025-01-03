@@ -30,9 +30,7 @@ while True:
         dark_mode_button.update(event)
     dark_mode_button.draw(screen)
     screen.blit(pygame.font.SysFont(None, 30).render(f"Mouse pos: {pygame.mouse.get_pos()}", True, (255, 255, 255)), (10, 10))
-    # Exemple d'utilisation corrigé :
     play.draw(screen)
-    #Button(screen, "Règles", "#FFFFFF", width/4, height/4 - height/16, width/2, height/4, "#0077B6", "#304D6D", 20, rules)
     rules.draw(screen)
     dark_mode = dark_mode_button.get_state()
     
